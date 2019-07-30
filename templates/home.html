@@ -1,0 +1,9 @@
+<html>
+<head><title>Index of /{{ path }}/</title></head>
+<body bgcolor="white">
+<h1>Index of /{{ path }}/</h1><hr><pre><a href="../">..</a>
+{%- for absname, filename, metadata in dircontents %}
+<a href="{{ absname }}">{{ filename}}</a>{{ metadata }}
+{%- endfor %}
+</pre><hr></body>
+</html>

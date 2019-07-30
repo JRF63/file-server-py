@@ -1,9 +1,9 @@
 <html>
-<head><title>Index of /{{ path }}/</title></head>
+<head><title>Index of {{ pathname }}/</title></head>
 <body bgcolor="white">
-<h1>Index of /{{ path }}/</h1><hr><pre><a href="../">..</a>
-{%- for absname, filename, metadata in dircontents %}
-<a href="{{ absname }}">{{ filename}}</a>{{ metadata }}
+<h1>Index of {{ pathname }}/</h1><hr><pre><a href="../">..</a>
+{%- for content in dircontents %}
+{{ content }}
 {%- endfor %}
 </pre><hr></body>
 </html>

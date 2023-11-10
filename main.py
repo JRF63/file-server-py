@@ -1,6 +1,7 @@
 import os
 import datetime
 import flask
+from werkzeug.utils import safe_join
 
 app = flask.Flask(__name__)
 
@@ -10,7 +11,8 @@ FMT = '<a href="{}">{:<55}{:0>2}-{}-{} {:0>2}:{:0>2}{:>20}'
 
 def list_files(pathname):
     for filename in os.listdir(pathname):
-        absname = flask.safe_join(pathname, filename)
+        print(pathname, filename)
+        absname = safe_join(pathname, filename)
 
         if os.path.isfile(absname):
             filesize = str(os.path.getsize(absname))
@@ -37,7 +39,7 @@ def list_files(pathname):
 @app.route('/<path:path>')
 def home(path):
     
-    pathname = ROOT if path is None else flask.safe_join(ROOT, path)
+    pathname = ROOT if path is None else safe_join(ROOT, path)
 
     if os.path.isdir(pathname):
         return flask.render_template('home.html', pathname=pathname[len(ROOT):], dircontents=list_files(pathname))
